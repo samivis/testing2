@@ -1,10 +1,10 @@
 /*
-  style.css — how your app looks.
-
-  This is a clean, neutral starting point ON PURPOSE. On Day 3 you'll make it
-  YOURS: pick a color palette, pick fonts, give it a personality. For now,
-  it just needs to look tidy.
+  style.css — Dish Diary
+  Design spec: warm cream + black + amber / Playfair Display + Lora / editorial feel
+  Primary reference: ref_7 (Fig Mint)
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:wght@400;600&display=swap');
 
 * {
   box-sizing: border-box;
@@ -13,83 +13,272 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: #f4f4f5;
-  color: #18181b;
+  font-family: 'Lora', Georgia, serif;
+  background: #F5F0E6;
+  color: #1A1A1A;
   min-height: 100vh;
+}
+
+/* ── Site header ── */
+.site-header {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 2px solid #1A1A1A;
+  margin-bottom: 48px;
+}
+
+.site-header .brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.site-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.site-header h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.site-header .tagline {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.85rem;
+  color: #555;
+  letter-spacing: 0.04em;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  background: #1A1A1A;
+  color: #F5F0E6;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: #3A3A3A;
+}
+
+/* ── Blog grid ── */
+.blog-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 32px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.13);
+}
+
+.card img {
   width: 100%;
-  max-width: 560px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  height: 220px;
+  object-fit: cover;
+  display: block;
 }
 
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
+.card-body {
+  padding: 18px 20px 20px;
 }
 
-.subtitle {
-  color: #71717a;
-  margin-bottom: 20px;
+.caption {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #1A1A1A;
+  margin-bottom: 12px;
 }
 
-textarea {
-  width: 100%;
-  min-height: 90px;
-  padding: 14px;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 2px solid #e4e4e7;
-  border-radius: 10px;
-  resize: vertical;
+.date {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  color: #C4712A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-variant: small-caps;
 }
 
-textarea:focus {
-  outline: none;
-  border-color: #6366f1;
+/* ── Empty state ── */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
 }
 
-button {
-  margin-top: 14px;
-  width: 100%;
-  padding: 14px;
-  font-size: 1rem;
+.empty p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.empty a {
+  color: #1A1A1A;
+  font-style: normal;
   font-weight: 600;
-  color: #ffffff;
-  background: #6366f1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Upload page ── */
+.upload-page {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.back {
+  display: inline-block;
+  color: #1A1A1A;
+  text-decoration: none;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 36px;
+  border-bottom: 1px solid #1A1A1A;
+  padding-bottom: 1px;
+}
+
+.back:hover {
+  color: #C4712A;
+  border-color: #C4712A;
+}
+
+.upload-page h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.upload-page h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.upload-page .subtitle {
+  font-family: 'Lora', Georgia, serif;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.upload-form {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1A1A1A;
+}
+
+.optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #999;
+  font-size: 0.82rem;
+}
+
+input[type="file"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: 'Lora', Georgia, serif;
+  color: #1A1A1A;
+  background: #F5F0E6;
+  border: 2px solid #1A1A1A;
+  border-radius: 4px;
+  transition: box-shadow 0.15s;
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+input[type="file"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(196, 113, 42, 0.2);
+}
+
+button[type="submit"] {
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  color: #F5F0E6;
+  background: #1A1A1A;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+  align-self: flex-start;
 }
 
-button:hover {
-  background: #4f46e5;
+button[type="submit"]:hover {
+  background: #3A3A3A;
 }
 
-button:disabled {
-  background: #a1a1aa;
-  cursor: not-allowed;
-}
-
-.result {
-  margin-top: 22px;
-  padding: 18px;
-  background: #f4f4f5;
-  border-radius: 10px;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  white-space: pre-wrap;
-}
-
-.hidden {
+/* ── Generating state ── */
+.generating-msg {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: #C4712A;
+  font-size: 0.9rem;
   display: none;
+  margin-top: -8px;
 }
