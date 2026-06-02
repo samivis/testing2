@@ -3,49 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explain Anything</title>
+  <title>Dish Diary</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
-  <main class="card">
-    <h1>Explain Anything</h1>
-    <p class="subtitle">Type a topic. Get a plain-English explanation.</p>
 
-    <textarea id="input" placeholder="e.g. black holes, the stock market, why people get nervous"></textarea>
+  <header class="site-header">
+    <div class="brand">
+      <h1>Dish <em>Diary.</em></h1>
+      <p class="tagline">a personal food photo blog</p>
+    </div>
+    <a href="/upload" class="btn">Post a dish →</a>
+  </header>
 
-    <button id="go" onclick="ask()">Explain it →</button>
-
-    <div id="result" class="result hidden"></div>
+  <main class="blog-main">
+    {% if posts %}
+      <div class="grid">
+        {% for post in posts %}
+          <div class="card">
+            <img src="/{{ post.filename }}" alt="food photo" />
+            <div class="card-body">
+              <p class="caption">{{ post.caption }}</p>
+              <p class="date">{{ post.date }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty">
+        <p>Your diary is empty. Go eat something worth remembering.</p>
+        <a href="/upload">Add your first dish →</a>
+      </div>
+    {% endif %}
   </main>
 
-  <!--
-    This is the part that talks to your Python code.
-    It sends what you typed to the "/ask" route in main.py and shows the answer.
-  -->
-  <script>
-    async function ask() {
-      const input = document.getElementById("input").value;
-      const button = document.getElementById("go");
-      const result = document.getElementById("result");
-
-      result.classList.remove("hidden");
-      result.textContent = "Thinking...";
-      button.disabled = true;
-
-      try {
-        const response = await fetch("ask", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ input: input }),
-        });
-        const data = await response.json();
-        result.textContent = data.answer;
-      } catch (err) {
-        result.textContent = "Something went wrong. Try running your app again.";
-      } finally {
-        button.disabled = false;
-      }
-    }
-  </script>
 </body>
 </html>
