@@ -64,9 +64,13 @@ def ask_ai(prompt, system_prompt="You are a helpful, friendly assistant."):
     """
     if not ai_is_connected():
         return (
-            "AI isn't connected yet. Open the Agent panel (top right) and say:\n"
-            "'Please set up Replit AI so my app can make AI calls.'\n"
-            "Then run your app again."
+            "AI isn't connected yet!\n\n"
+            "1. Click the Agent button (top right — sparkle icon)\n"
+            "2. Type: Please set up Replit AI so my app can make AI calls.\n"
+            "3. When the popup appears, click Approve (not Dismiss!)\n"
+            "4. Replit may ask for your phone number — that's normal, do it\n"
+            "5. Hit Run again once Agent says it's done\n\n"
+            "Still broken? Ask your instructor."
         )
 
     client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
