@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add a Dish — Dish Diary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <div class="upload-page">
+    <a href="/" class="back">← Back to diary</a>
+
+    <h1>Add a <em>Dish.</em></h1>
+    <p class="subtitle">Upload a photo and drop a quick note — AI will write the caption for you.</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form" id="upload-form">
+
+      <div class="form-group">
+        <label for="photo">Food photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required />
+      </div>
+
+      <div class="form-group">
+        <label for="note">Quick note <span class="optional">(optional)</span></label>
+        <input type="text" id="note" name="note" placeholder="e.g. tacos from that spot on Main St" />
+      </div>
+
+      <button type="submit" id="submit-btn">Post this dish →</button>
+      <p class="generating-msg" id="generating-msg">Writing your caption… hang tight ✦</p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('upload-form').addEventListener('submit', function() {
+      document.getElementById('submit-btn').disabled = true;
+      document.getElementById('submit-btn').textContent = 'Posting…';
+      document.getElementById('generating-msg').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
