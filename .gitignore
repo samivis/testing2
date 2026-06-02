@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Environment files (never commit secrets)
+.env
+.env.local
+
+# Agent scratch / saved notes from day 5
+notes.txt
+agent_log.txt
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor noise
+.vscode/
+.idea/
+
+# NOTE: never add .replit or replit.nix here — Replit needs them to run your app
